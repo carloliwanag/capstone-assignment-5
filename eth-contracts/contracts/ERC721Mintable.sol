@@ -600,7 +600,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
 
-    function setTokenURI(uint256 tokenId) internal {
+    function _setTokenURI(uint256 tokenId) internal {
         require(_exists(tokenId));
         string memory concatTokenURI = strConcat(
             _baseTokenURI,
@@ -618,3 +618,22 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -takes in a 'to' address, tokenId, and tokenURI as parameters
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
+
+contract CustomERC721Token is ERC721Metadata {
+    string private _name = "CustomToken721";
+    string private _symbol = "CT";
+    string private _baseTokenURI =
+        "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+
+    constructor() public ERC721Metadata(_name, _symbol, _baseTokenURI) {}
+
+    function mint(
+        address to,
+        uint256 tokenId,
+        string memory tokenURI
+    ) public onlyOwner returns (bool) {
+        _mint(to, tokenId);
+        _setTokenURI(tokenId);
+        return true;
+    }
+}
