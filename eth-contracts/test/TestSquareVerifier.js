@@ -5,12 +5,12 @@ contract('Verifier', (accounts) => {
   const account_one = accounts[0];
 
   describe('Test verification', () => {
-    beforeEach(async () => {
+    before(async () => {
       this.contract = await Verifier.new({ from: account_one });
     });
 
     it('should verify with correct proof', async () => {
-      const { proof, inputs } = require('./proof.json');
+      const { proof, inputs } = require('../../zokrates/proofs/proof2-4.json');
 
       let response = await this.contract.verifyTx(
         proof.a,
@@ -19,19 +19,20 @@ contract('Verifier', (accounts) => {
         inputs
       );
       const { logs } = response;
-
       assert.ok(logs.length === 1);
       const eventName = logs[0].event;
       assert.equal('Verified', eventName);
     });
 
     it('should not verify with incorrect proof', async () => {
-      const { proof, inputs } = require('./proof.json');
+      const { proof, inputs } = require('../../zokrates/proofs/proof-err.json');
 
-      let response = await this.contract.verifyTx(proof.a, proof.b, proof.c, [
-        '0x0000000000000000000000000000000000000000000000000000000000000003',
-        '0x0000000000000000000000000000000000000000000000000000000000000009',
-      ]);
+      let response = await this.contract.verifyTx(
+        proof.a,
+        proof.b,
+        proof.c,
+        inputs
+      );
 
       const { logs } = response;
       // no verified event emitted
