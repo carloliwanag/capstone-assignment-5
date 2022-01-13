@@ -49,3 +49,7 @@ https://rinkeby.etherscan.io/address/0xfe4e25b5F89669053223E077FbCB909825ae9286
 9. 0x84452e8d80da0b3c7d06b3b8b0aef9712b59d3b1896dc9ac7ade9c3749f12e86
 
 10. 0x382f533886e0e4575b997a1b85532311bb918f098843563ff43ea8816679f48c
+
+## Opensea collections
+
+https://testnets.opensea.io/collection/customtoken721
