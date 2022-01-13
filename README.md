@@ -12,7 +12,29 @@ The capstone will build upon the knowledge you have gained in the course in orde
 * [Interactive zero knowledge 3-colorability demonstration](http://web.mit.edu/~ezyang/Public/graph/svg.html)
 * [Docker](https://docs.docker.com/install/)
 * [ZoKrates](https://github.com/Zokrates/ZoKrates)
+* [Node]
 
+
+# To test
+
+1. on the terminal, run `npm install`
+
+2. run `truffle develop`
+
+3. within truffle console, run `compile`
+
+4. run `migrate`
+
+5. run `test`
+
+
+# To deploy to Rinkeby network
+
+1. on the terminal, run `truffle develop`
+
+2. wihtin truffle console, run `migrate --network rinkeby`
+
+3. on another terminal, run `node app/app.js` to initially mint 10 tokens
 
 ## Rinkeby Contracts
 
@@ -49,3 +71,7 @@ https://rinkeby.etherscan.io/address/0xfe4e25b5F89669053223E077FbCB909825ae9286
 9. 0x84452e8d80da0b3c7d06b3b8b0aef9712b59d3b1896dc9ac7ade9c3749f12e86
 
 10. 0x382f533886e0e4575b997a1b85532311bb918f098843563ff43ea8816679f48c
+
+## Opensea collections
+
+https://testnets.opensea.io/collection/customtoken721
